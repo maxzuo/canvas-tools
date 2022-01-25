@@ -1,0 +1,7 @@
+matplotlib
+nltk
+wordcloud
+beautifulsoup4
+requests
+selenium
+tqdm
