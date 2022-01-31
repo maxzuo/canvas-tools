@@ -27,8 +27,11 @@ webdriver_exec ="./venv/chromedriver.exe"
 
 def login(driver, wait):
     driver.get(base_url)
-    driver.find_element(By.ID, "username").send_keys(username)
-    driver.find_element(By.ID, "password").send_keys(password)
+    try:
+        wait.until(EC.element_to_be_clickable((By.ID, "username"))).send_keys(username)
+        wait.until(EC.element_to_be_clickable((By.ID, "password"))).send_keys(password)
+    except Exception as e:
+        raise e
 
     driver.find_element(By.CSS_SELECTOR, "#login > section.btn-row.buttons > input.btn.btn-submit.button").click()
 
